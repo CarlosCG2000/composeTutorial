@@ -86,6 +86,10 @@ Creamos un nuevo fichero `ItemList.kt`
 ## 7. Scaffold
 La barra como la Toolbar.
 
+Creamos un nuevo fichero `ItemListScaffold.kt`
+
 ## 8. Navegación
-Añadir la navegación como dependencias:
+Añadir la navegación como dependencias: `navigation-compose` implementamos `navigation-compose`
+
+Si estamos en una jerarquía donde todo sea Compose, podemos usar la librería `Navigation-Compose`.
 

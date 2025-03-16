@@ -243,35 +243,9 @@ fun Ejer5LazyColumn() {
 
 // 'fun MyLazyImagen()' en 'Itemlist.kt'
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MyScaffold() {
-    Scaffold (
-        topBar = { TopAppBar(
-            title = { Text("Mi lista Lazy") },
-            actions = {
-                IconButton(onClick = {}) {
-                    Icon(imageVector = Icons.Default.Search, contentDescription = null)
-                }
+// 'fun MyScaffold()' en 'ItemListScaffold.kt'
 
-                IconButton(onClick = {}) {
-                    Icon(imageVector = Icons.Default.MoreVert, contentDescription = null)
-                }
-            }
-        )},
-        floatingActionButton = {
-            FloatingActionButton(onClick = {}) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = null)
-            }
-        }
-    ){
 
-        Box(modifier = Modifier.padding(it)){
-            MyLazyImagen()
-        }
-
-    }
-}
 
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
