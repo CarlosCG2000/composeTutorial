@@ -1,13 +1,15 @@
 
 # Jetpack Compose
 
+____________________ PARTE 1 ____________________
+
 ## ¿Qué es?
 • Sistema de una interfaz declarativa a través de funciones.
 • Es reactivo.
 • Sustituye XMLs pero es interoperable.
 • Solo se puede usar Kotlin y no en Java
 
-## Vamos al primer proyecto
+## Vamos al proyecto
 
 ## 1 Elementos básicos
 
@@ -99,3 +101,6 @@ Fichero `Navegations.kt`
 - Colores: un esquema de colores con los colores principales y luego con un esquema de colores
 - Tipografías
 - Formas
+
+____________________ PARTE 2 ____________________
+
