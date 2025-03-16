@@ -93,3 +93,9 @@ Añadir la navegación como dependencias: `navigation-compose` implementamos `na
 
 Si estamos en una jerarquía donde todo sea Compose, podemos usar la librería `Navigation-Compose`.
 
+Fichero `Navegations.kt`
+
+## 9. Temas
+- Colores: un esquema de colores con los colores principales y luego con un esquema de colores
+- Tipografías
+- Formas

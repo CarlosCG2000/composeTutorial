@@ -63,6 +63,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
@@ -76,7 +79,7 @@ class MainActivity : ComponentActivity() {
 //            CursoComposeTheme { // El tema que va a tener toda mi app
 //                Screen {
 //            Scaffold {
-            MyScaffold()
+            MyNavegacion()
 //            }
                 }
 //            }
@@ -245,8 +248,7 @@ fun Ejer5LazyColumn() {
 
 // 'fun MyScaffold()' en 'ItemListScaffold.kt'
 
-
-
+//  'fun MyNavegacion()' en 'Navegacions'
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 // @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Modo Oscuro")
@@ -265,6 +267,7 @@ fun GreetingPreview() {
         // MyLazyColumn()
         // Ejer5LazyColumn()
         // MyLazyImagen()
-        MyScaffold()
+        // MyScaffold()
+        MyNavegacion()
     }
 }

@@ -1,6 +1,7 @@
 package es.upsa.mimo.cursocompose
 
 import android.content.res.Configuration
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,10 +28,11 @@ import androidx.compose.ui.unit.dp
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
 @Composable
-fun Ejer4ExtraLogin() {
+fun Ejer4ExtraLogin(onLogin: () -> Unit /** Para la navegación a otra vista */) {
 
     var user by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
+    var passVisible by rememberSaveable {  mutableStateOf(false) }
     var error by rememberSaveable { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize(),
@@ -43,15 +45,12 @@ fun Ejer4ExtraLogin() {
             label = {Text("User")},
             placeholder = {Text("Write your email")},
             isError = error
-
         )
-
-        var passVisible by rememberSaveable {  mutableStateOf(false) }
 
         TextField(value = password,
             onValueChange = { password = it },
-            label = {Text("Password")},
-            placeholder = {Text("Write your password")},
+            label = { Text("Password") },
+            placeholder = { Text("Write your password") },
             isError = error,
             trailingIcon = {
                 PassVisibleIcon (passVisible,
@@ -65,11 +64,15 @@ fun Ejer4ExtraLogin() {
         )
 
         Button(onClick = {
-            user = ""
-            password = ""
-            val userError = !user.contains("@")
+            // user = ""
+            // password = ""
+            var userError = !user.contains("@")
             val passError = password.length < 5
             error = userError || passError
+
+            if(!error){
+                onLogin()
+            }
         },
             enabled = (user.isNotEmpty() && password.isNotEmpty())
         ){ Text("Registrar")}
@@ -104,6 +107,6 @@ private fun PassVisibleIcon(visible: Boolean, onVisibleChange:(Boolean) -> Unit)
 @Composable
 fun Ejer4ExtraLoginPreview() {
     CursoComposeTheme {
-        Ejer4ExtraLogin()
+        Ejer4ExtraLogin({})
     }
 }
