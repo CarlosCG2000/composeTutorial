@@ -248,7 +248,7 @@ fun Ejer5LazyColumn() {
 
 // 'fun MyScaffold()' en 'ItemListScaffold.kt'
 
-//  'fun MyNavegacion()' en 'Navegacions'
+// 'fun MyNavegacion()' en 'Navegacions'
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 // @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Modo Oscuro")
