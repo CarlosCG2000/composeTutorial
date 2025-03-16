@@ -61,7 +61,6 @@ Dependencia de extensión de iconos: buscar `material-icons` obtener `material-i
 Fichero `LoginForm.kt`
 
 ## 5. Layouts dinámicos.
-
 * 5 Ejercicio: Crea un LazyColumn que pinte la vista anterior usando estos items
 ```java
 data class Item( val id: Int, val title: String, val subtitle: String, val thumb: String)
@@ -76,3 +75,17 @@ val items = (1.. 1000).map {
 ```
 
 Creamos un fichero `Item.kt`
+
+## 6. Carga de imágenes con Coil
+Librería externa: COIL poniendo `io.coil-kt` y aplicamos la de `coil-compose`.
+
+Y en el android Manifest añadimos: `<uses-permission android:name="android.permission.INTERNET" />`
+
+Creamos un nuevo fichero `ItemList.kt`
+
+## 7. Scaffold
+La barra como la Toolbar.
+
+## 8. Navegación
+Añadir la navegación como dependencias:
+
