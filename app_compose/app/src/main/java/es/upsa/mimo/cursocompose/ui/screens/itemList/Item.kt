@@ -1,10 +1,9 @@
-package es.upsa.mimo.cursocompose
+package es.upsa.mimo.cursocompose.ui.screens.itemList
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.CrueltyFree
 import androidx.compose.material.icons.filled.EmojiNature
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Pets
 import androidx.compose.ui.graphics.vector.ImageVector
 

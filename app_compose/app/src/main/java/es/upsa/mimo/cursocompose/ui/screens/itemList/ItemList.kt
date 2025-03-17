@@ -1,6 +1,5 @@
-package es.upsa.mimo.cursocompose
+package es.upsa.mimo.cursocompose.ui.screens.itemList
 
-import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,10 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import coil.compose.AsyncImagePainter
 
 @Composable
 fun MyLazyImagen(items: List<Item>, onItemClick: (Item) -> Unit) {

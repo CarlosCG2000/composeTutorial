@@ -134,3 +134,5 @@ Como hacer que aparezca elmenu lateral.
 Añadimos el `ModalNavigationDrawer` en el fichero `ItemListScaffold.kt` y en mi `MyTopAppBar` la funcionalidad del click al icono del menu.
 
 ## 17. ViewModel
+Añadimos la dependecia: buscamos `androidx.lifecycle` y seleccionamos `lifecycle-viewmodel-compose`
+

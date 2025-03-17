@@ -1,9 +1,7 @@
-package es.upsa.mimo.cursocompose
+package es.upsa.mimo.cursocompose.ui.screens.itemList
 
-import android.R.attr.contentDescription
 import android.content.res.Configuration
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,19 +10,14 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Upgrade
 import androidx.compose.material3.Badge
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -101,13 +94,14 @@ fun MyScaffold() {
 
         Scaffold(
             modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection), // para la topBar
-            topBar = { MyTopAppBar(
-                        scrollBehavior = scrollBehavior,
-                        onNavigationClick =  {
-                            scope.launch {
-                                drawerState.open() // es una función suspend
-                            }
-                        })
+            topBar = {
+                MyTopAppBar(
+                    scrollBehavior = scrollBehavior,
+                    onNavigationClick = {
+                        scope.launch {
+                            drawerState.open() // es una función suspend
+                        }
+                    })
              },
 
             bottomBar = {

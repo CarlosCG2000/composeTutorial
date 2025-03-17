@@ -1,4 +1,4 @@
-package es.upsa.mimo.cursocompose
+package es.upsa.mimo.cursocompose.ui.screens.itemList
 
 import android.content.res.Configuration
 import androidx.compose.material.icons.Icons

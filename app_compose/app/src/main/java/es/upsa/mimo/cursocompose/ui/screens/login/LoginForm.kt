@@ -1,7 +1,6 @@
-package es.upsa.mimo.cursocompose
+package es.upsa.mimo.cursocompose.ui.screens.login
 
 import android.content.res.Configuration
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
