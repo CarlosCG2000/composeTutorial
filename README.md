@@ -1,7 +1,7 @@
 
 # Jetpack Compose
 
-____________________ PARTE 1 ____________________
+# ____________________ PARTE 1 ____________________
 
 ## ¿Qué es?
 • Sistema de una interfaz declarativa a través de funciones.
@@ -57,19 +57,30 @@ IMAGEN [`2. Tipos Modifiers`]
 • Sobrevivir a rotaciones
 
 Tenemos dos funciones: `remember` y `mutableStateOf`
-• remember y mutableStateOf trabajan juntos
-• Hay varias formas de usar remember en función de la situación
+• `remember` y `mutableStateOf` trabajan juntos
+• Hay varias formas de usar `remember` en función de la situación
 
-* 3 Ejercicio: Crea un state para cada uno de los TextFields. Activa el botón solo si los dos campos tienen datos, y cuando se haga click, muestra un Toast y borra los campos.
+[Ejemplo `MyLoginState()` en el `MainActivity.kt`]
 
-* 4 Ejercicio: Mejorar el ejer 3 añadiendo un icono y la comprobación de errores en el formulario.
+* 3 Ejercicio: Crea un state para cada uno de los TextFields. Activa el botón solo si los dos campos tienen datos, y cuando se haga click, muestra un Toast y borra los campos. [Resultado: `MyLoginEnabled()` en el `MainActivity.kt`]
+
+* 4 Ejercicio: Mejorar el `ejercicio 3` añadiendo un icono y la comprobación de errores en el formulario.
+[Resultado:
+- `LoginForm(onLogin: () -> Unit, viewModel: LoginFormViewModel = viewModel())` en el fichero `screens/login/LoginForm.kt`
+- `PassVisibleIcon` en el fichero `screens/login/component/PassVisibleIcon.kt`
+- `LoginFormViewModel: ViewModel()` en el fichero `screens/login/LoginFormViewModel.kt`]
+- `LoginFormUiState` en el fichero `screens/login/LoginFormUiState.kt`
+
 Dependencia de extensión de iconos: buscar `material-icons` obtener `material-icons-extended`.
 Fichero `LoginForm.kt`
 
 ## 5. Layouts dinámicos.
-* 5 Ejercicio: Crea un LazyColumn que pinte la vista anterior usando estos items
+[Ejemplo `MyLazyColumn()` en el `MainActivity.kt`]
+
+* 5 Ejercicio: Crea un LazyColumn que pinte la vista anterior usando estos items.
+[Creamos un fichero `Item.kt` en el `screens/itemList/Item.kt`]
 ```java
-data class Item( val id: Int, val title: String, val subtitle: String, val thumb: String)
+data class Item( val id: Int, val title: String, val subtitle: String, val thumb: String )
 
 val items = (1.. 1000).map {
     Item (it,
@@ -79,20 +90,19 @@ val items = (1.. 1000).map {
     )
 }
 ```
-
-Creamos un fichero `Item.kt`
+[Resultado `SimpleLazyColumn()` en el `MainActivity.kt`]
 
 ## 6. Carga de imágenes con Coil
 Librería externa: COIL poniendo `io.coil-kt` y aplicamos la de `coil-compose`.
 
 Y en el android Manifest añadimos: `<uses-permission android:name="android.permission.INTERNET" />`
 
-Creamos un nuevo fichero `ItemList.kt`
+[Ejemplo `ItemList()` en el `screens/itemList/components/ItemList.kt`]
 
 ## 7. Scaffold
 La barra como la Toolbar.
 
-Creamos un nuevo fichero `ItemListScaffold.kt`
+[Ejemplo `()` en el `screens/itemList/ItemListComplete.kt`]
 
 ## 8. Navegación
 Añadir la navegación como dependencias: `navigation-compose` implementamos `navigation-compose`
@@ -106,7 +116,7 @@ Fichero `Navegations.kt`
 - Tipografías
 - Formas
 
-____________________ PARTE 2 ____________________
+# ____________________ PARTE 2 ____________________
 
 ## 10. Dependencias BOM (`ya por defecto`)
 Lo que nos permite es gestionar la dependecias de varias librerias que trabajan en común de forma conjunta de forma que ese `BOM`, siempre nos va a devolver las versiones de las dependecias que pueden trabajar entre ellas sin conflictos.

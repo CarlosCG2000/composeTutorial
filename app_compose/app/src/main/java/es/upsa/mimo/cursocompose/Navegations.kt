@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import es.upsa.mimo.cursocompose.ui.screens.itemList.MyScaffold
+import es.upsa.mimo.cursocompose.ui.screens.itemList.ItemListComplete
 import es.upsa.mimo.cursocompose.ui.screens.login.LoginForm
 
 @Composable
@@ -22,7 +22,7 @@ fun MyNavegacion() {
         }
 
         composable(route = "itemList") {
-            MyScaffold()
+            ItemListComplete()
         }
     }
 }

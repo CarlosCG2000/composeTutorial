@@ -16,10 +16,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
 //            CursoComposeTheme { // El tema que va a tener toda mi app
 //                Screen {
 //            Scaffold {
-             MyNavegacion()
+              MyNavegacion()
 
 //            }
                 }
@@ -192,8 +192,9 @@ fun MyLoginEnabled() {
 /** 4 Ejercicio: Mejorar el ejercicio 3 añadiendo un icono y la comprobación de errores en el formulario. */
 // Fichero 'LoginForm.kt' y 'LoginFormViewModel.kt'
 
+// Se puede crear un Composable que recibia otro Composable para mostrarlos
 @Composable
-fun Screen(content: @Composable () -> Unit ) { // vista principal que puede recibir otra vista
+fun Screen(content: @Composable () -> Unit ) { // Vista principal que puede recibir otra vista secundaria por parametro
     
 }
 
@@ -203,30 +204,31 @@ fun MyLazyColumn() {
     val listItems: List<String> = (1..100).map { "Item $it" }
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(listItems.size){ index ->
-            Text(listItems[index])
+        items(listItems){ item ->
+            Text(item)
         }
     }
 }
 
+/** 5 Ejercicio: Crea un LazyColumn que pinte la vista anterior usando estos items definidos en 'Item.kt'. */
 @Composable
-fun Ejer5LazyColumn(items: List<Item>) {
+fun SimpleLazyColumn(items: List<Item>) {
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-        items(items.size){ index ->
+        items(items){ item ->
 
             Column(modifier = Modifier.padding(15.dp)) {
-                Text(items[index].title)
-                Text(items[index].subtitle)
+                Text(item.title)
+                Text(item.subtitle)
             }
         }
     }
 }
 
-// 'fun MyLazyImagen()' en 'Itemlist.kt'
+// 'fun MyListWithImage()' en 'Itemlist.kt'
 
-// 'fun MyScaffold()' en 'ItemListScaffold.kt'
+// 'fun MyScaffold()' en 'ItemListComplete.kt'
 
 // 'fun MyNavegacion()' en 'Navegacions'
 
