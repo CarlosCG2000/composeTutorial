@@ -7,24 +7,19 @@ import androidx.lifecycle.ViewModel
 
 class LoginFormViewModel: ViewModel() {
 
-    var state by mutableStateOf(UiState())
-        private set
-
-    data class UiState(
-        val loggedIn: Boolean = false,
-        val error: String? = null
-    )
+    var state by mutableStateOf(LoginFormUiState())
+        private set // no se puede modificar la varaible fuera de aquí
 
     fun onLoginClick(user: String, pass: String){
         state = when {
-            !user.contains('@') -> UiState(error = "User must be a valid email")
-            pass.length < 5 -> UiState(error = "Password must be at least 5 characters")
-            else -> UiState(loggedIn = true)
+            !user.contains('@') -> LoginFormUiState(error = "User must be a valid email")
+            pass.length < 5 -> LoginFormUiState(error = "Password must be at least 5 characters")
+            else -> LoginFormUiState(loggedIn = true)
         }
     }
 
      fun onLoggedIn() {
-        state = UiState(loggedIn = false)
+        state = LoginFormUiState(loggedIn = false)
     }
 
 }
