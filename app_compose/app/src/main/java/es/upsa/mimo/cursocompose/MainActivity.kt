@@ -230,7 +230,7 @@ fun MyLazyColumn() {
 }
 
 @Composable
-fun Ejer5LazyColumn() {
+fun Ejer5LazyColumn(items: List<Item>) {
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
 

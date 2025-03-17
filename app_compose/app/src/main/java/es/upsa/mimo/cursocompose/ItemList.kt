@@ -2,10 +2,12 @@ package es.upsa.mimo.cursocompose
 
 import android.content.res.Configuration
 import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -20,9 +22,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter
 
 @Composable
-fun MyLazyImagen() {
+fun MyLazyImagen(items: List<Item>, onItemClick: (Item) -> Unit) {
 
     LazyColumn(modifier = Modifier.fillMaxSize()) {
 
@@ -34,7 +37,9 @@ fun MyLazyImagen() {
                 Log.e("MyLazyImagen","Item $index")
             }
 
-            Row(modifier = Modifier.padding(8.dp),
+            Row(modifier = Modifier.padding(8.dp)
+                                    .fillMaxWidth()
+                                    .clickable{ onItemClick(items[index]) },
                 verticalAlignment = Alignment.CenterVertically) {
 
                 AsyncImage(model = items[index].thumb,
@@ -56,8 +61,9 @@ fun MyLazyImagen() {
     }
 }
 
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
-@Composable
-fun MyLazyImagenPreview() {
-   MyLazyImagen()
-}
+//
+//@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
+//@Composable
+//fun MyLazyImagenPreview() {
+//   MyLazyImagen(items(Type.CAT), (items(Type.CAT)[0]))
+//}

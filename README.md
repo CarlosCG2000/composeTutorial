@@ -104,17 +104,23 @@ Fichero `Navegations.kt`
 
 ____________________ PARTE 2 ____________________
 
-## 10. Dependencias BOM (ya por defecto)
+## 10. Dependencias BOM (`ya por defecto`)
 Lo que nos permite es gestionar la dependecias de varias librerias que trabajan en común de forma conjunta de forma que ese `BOM`, siempre nos va a devolver las versiones de las dependecias que pueden trabajar entre ellas sin conflictos.
 
-## 11. Kotlin DSL (ya por defecto)
+## 11. Kotlin DSL (`ya por defecto`)
 Pasar los archivos del Gradle (en rubi) (`settings.gradle`) a Kotlin Scripts (en kotlin) (`setting.gradle.kts`)
 
-## 12. Version Catalog (ya por defecto)
+## 12. Version Catalog (`ya por defecto`)
 Es el `libs.versions.toml`
 
 ## 13. TopAppBar
 Pasamos la `TopAppBar` que teniamos en `ItemListScaffold.kt` a un nuevo archivo `MyTopAppBar.kt`.
 
 ## 14. Bottom Navigation
+La barra de navegación inferior.
 
+Se realiza en el fichero `ItemListScaffold.kt` dentro del `Scaffold`, la función `BottomNavigation`.
+Tambien se va a tener que editar el `Item.kt` convirtiendolo a función en vez de variable.
+
+## 15. SnackBar
+Es una barra en la parte inferior indicando una información temporal (equivalente a los antiguos Toast).
