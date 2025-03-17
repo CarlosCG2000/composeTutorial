@@ -130,3 +130,7 @@ Tambien se va a tener que editar el `ItemList.kt` pasando por parámetro en la l
 
 ## 16. Navigation Drawer
 Como hacer que aparezca elmenu lateral.
+
+Añadimos el `ModalNavigationDrawer` en el fichero `ItemListScaffold.kt` y en mi `MyTopAppBar` la funcionalidad del click al icono del menu.
+
+## 17. ViewModel

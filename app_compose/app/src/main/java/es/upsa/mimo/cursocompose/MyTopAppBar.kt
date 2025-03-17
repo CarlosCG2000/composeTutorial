@@ -16,12 +16,12 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun MyTopAppBar(scrollBehavior: TopAppBarScrollBehavior?) {
+fun MyTopAppBar(scrollBehavior: TopAppBarScrollBehavior?, onNavigationClick:() -> Unit) {
     TopAppBar( // CenterAlignedTopAppBar, MediumTopAppBar, LargeTopAppBar
 
         title = { Text("Mi lista Lazy") },
         navigationIcon = {
-           IconButton(onClick = {}) {
+           IconButton(onClick = onNavigationClick) {
             Icon(imageVector = Icons.Default.Menu,
                 contentDescription = null)
         }},
@@ -49,6 +49,6 @@ fun MyTopAppBar(scrollBehavior: TopAppBarScrollBehavior?) {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun TopAppBarPreview() {
-    MyTopAppBar(null)
+    MyTopAppBar(null, {})
 }
 

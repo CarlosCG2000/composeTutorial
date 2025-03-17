@@ -14,7 +14,7 @@ fun MyNavegacion() {
     val navController = rememberNavController()
 
     NavHost(navController = navController,
-        startDestination = "login"){
+        startDestination = "itemList"){
 
         composable(route = "login") {
             Ejer4ExtraLogin(onLogin = { navController.navigate("itemList")})
