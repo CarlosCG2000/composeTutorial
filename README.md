@@ -124,3 +124,9 @@ Tambien se va a tener que editar el `Item.kt` convirtiendolo a función en vez d
 
 ## 15. SnackBar
 Es una barra en la parte inferior indicando una información temporal (equivalente a los antiguos Toast).
+
+Se realiza en el fichero `ItemListScaffold.kt` dentro del `Scaffold`, la función `onItemClick` en el listado.
+Tambien se va a tener que editar el `ItemList.kt` pasando por parámetro en la lambda para la acción.
+
+## 16. Navigation Drawer
+Como hacer que aparezca elmenu lateral.

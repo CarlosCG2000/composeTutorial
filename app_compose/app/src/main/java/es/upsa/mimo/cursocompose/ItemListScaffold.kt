@@ -20,29 +20,39 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyScaffold() {
 
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     // enterAlwaysScrollBehavior(): para que cuando se suba vaya apareciendo lentamente
     // pinnedScrollBehavior(): se mantiene toco el tiempo en la parte superior
     // exitUntilCollapsedScrollBehavior: habria que usar una LargeTopAppBar
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+
     var selectedType by rememberSaveable { mutableStateOf(Type.CAT) }
+
+    val snackbarHostState = remember { SnackbarHostState() } // ojo solo puede ser remember
+    val scope = rememberCoroutineScope()  // para 'fun showSnackbar' al ser 'suspend'.  Permite lanzar tareas asíncronas dentro de un Composable sin necesidad de usar un ViewModel.
 
     Scaffold (
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection), // para la topBar
@@ -55,6 +65,8 @@ fun MyScaffold() {
             )
         },
 
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
+
         floatingActionButton = {
             FloatingActionButton(onClick = {}) {
                 Row {
@@ -64,9 +76,28 @@ fun MyScaffold() {
                 }
             }
         }
+
     ){
         Box(modifier = Modifier.padding(it)){
-            MyLazyImagen(items (selectedType))
+
+            MyLazyImagen(items = items (selectedType),
+
+                onItemClick = { item ->
+                            scope.launch {// Inicia una corutina en el CoroutineScope que acabamos de crear.
+                                snackbarHostState.currentSnackbarData?.dismiss() // Si hay un Snackbar visible, lo cierra antes de mostrar uno nuevo.
+                                val result = snackbarHostState.showSnackbar(
+                                    message = item.title,
+                                    withDismissAction = true,
+                                    actionLabel = "Undo",
+                                    duration = SnackbarDuration.Short)
+
+                                when(result){
+                                    SnackbarResult.Dismissed -> { }
+                                    SnackbarResult.ActionPerformed -> { snackbarHostState.showSnackbar("Action perfomed")  }
+                                }
+                            }
+                }
+            )
         }
     }
 }

@@ -61,7 +61,6 @@ fun MyLazyImagen(items: List<Item>, onItemClick: (Item) -> Unit) {
     }
 }
 
-//
 //@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 //@Composable
 //fun MyLazyImagenPreview() {
