@@ -43,18 +43,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyScaffold() {
+fun MyScaffold(viewModel: ItemListViewModel = viewModel()) {
 
     // enterAlwaysScrollBehavior(): para que cuando se suba vaya apareciendo lentamente
     // pinnedScrollBehavior(): se mantiene toco el tiempo en la parte superior
     // exitUntilCollapsedScrollBehavior: habria que usar una LargeTopAppBar
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
-    var selectedType by rememberSaveable { mutableStateOf(Type.CAT) }
+    // var selectedType by rememberSaveable { mutableStateOf(Type.CAT) } // - EN VIEW MODEL
 
     val snackbarHostState = remember { SnackbarHostState() } // ojo solo puede ser remember
     val scope = rememberCoroutineScope()  // para 'fun showSnackbar' al ser 'suspend'.  Permite lanzar tareas asíncronas dentro de un Composable sin necesidad de usar un ViewModel.
@@ -106,8 +107,8 @@ fun MyScaffold() {
 
             bottomBar = {
                 BottomNavigation(
-                    selectedType = selectedType,
-                    onTypeClick = { selectedType = it }
+                    selectedType = viewModel.state.selectType,
+                    onTypeClick = { viewModel.onTypeChange(it) } // { selectedType = it }
                 )
             },
 
@@ -131,7 +132,7 @@ fun MyScaffold() {
             Box(modifier = Modifier.padding(it)) {
 
                 MyLazyImagen(
-                    items = items(selectedType),
+                    items =  viewModel.state.items, // items(selectedType),
 
                     onItemClick = { item ->
                         scope.launch {// Inicia una corutina en el CoroutineScope que acabamos de crear.

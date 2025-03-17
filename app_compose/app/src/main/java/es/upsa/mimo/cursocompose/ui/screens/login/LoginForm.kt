@@ -24,15 +24,25 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
 @Composable
-fun Ejer4ExtraLogin(onLogin: () -> Unit /** Para la navegación a otra vista */) {
+fun Ejer4ExtraLogin(onLogin: () -> Unit /** Para la navegación a otra vista */,
+                    viewModel: LoginViewModel = viewModel()
+) {
 
     var user by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var passVisible by rememberSaveable {  mutableStateOf(false) }
-    var error by rememberSaveable { mutableStateOf(false) }
+    // var error by rememberSaveable { mutableStateOf(false) } // -> EN EL VIEW MODEL
+    var error = viewModel.state.error != null
+
+    if(viewModel.state.loggedIn){
+        onLogin()
+        viewModel.onLoggedIn() // Si ya esta in se quite a false y no entre de manera repetida aqui
+    }
 
     Column(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
@@ -63,21 +73,22 @@ fun Ejer4ExtraLogin(onLogin: () -> Unit /** Para la navegación a otra vista */)
         )
 
         Button(onClick = {
+            viewModel.onLoginClick(user, password)
             // user = ""
             // password = ""
-            var userError = !user.contains("@")
-            val passError = password.length < 5
-            error = userError || passError
-
-            if(!error){
-                onLogin()
-            }
+//            var userError = !user.contains("@")
+//            val passError = password.length < 5
+//            error = userError || passError
+//
+//            if(!error){
+//                onLogin()
+//            }
         },
             enabled = (user.isNotEmpty() && password.isNotEmpty())
         ){ Text("Registrar")}
 
-        if(error){
-            Text("There's an error", color = MaterialTheme.colorScheme.error)
+        viewModel.state.error?.let { error ->
+            Text(error, color = MaterialTheme.colorScheme.error)
         }
     }
 }

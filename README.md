@@ -136,3 +136,4 @@ Añadimos el `ModalNavigationDrawer` en el fichero `ItemListScaffold.kt` y en mi
 ## 17. ViewModel
 Añadimos la dependecia: buscamos `androidx.lifecycle` y seleccionamos `lifecycle-viewmodel-compose`
 
+Lo hemos dividido en carpetas separadas entre la vista del `Listado`, y del `Login` cada una con su correspondiente `lógica` pasada de la `UI` a su correspondiente `View Model`.
