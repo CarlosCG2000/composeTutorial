@@ -29,8 +29,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
 @Composable
-fun Ejer4ExtraLogin(onLogin: () -> Unit /** Para la navegación a otra vista */,
-                    viewModel: LoginViewModel = viewModel()
+fun LoginForm(onLogin: () -> Unit /** Para la navegación a otra vista */,
+                    viewModel: LoginFormViewModel = viewModel()
 ) {
 
     var user by rememberSaveable { mutableStateOf("") }
@@ -117,6 +117,6 @@ private fun PassVisibleIcon(visible: Boolean, onVisibleChange:(Boolean) -> Unit)
 @Composable
 fun Ejer4ExtraLoginPreview() {
     CursoComposeTheme {
-        Ejer4ExtraLogin({})
+        LoginForm({})
     }
 }

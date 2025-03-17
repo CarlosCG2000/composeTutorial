@@ -19,25 +19,29 @@ Poniendo en letras `comp` + pulsado `enter` se puede añadir directamente una fu
 
 Una función `@Composable` solo se puede llamar dentro de otro `@Composable`.
 
-* 1. Ejercicio: Crea un botón que muestre un mensaje pasado por argumento al Composable, y que muestre un Toast al hacer click.
+* 1. Ejercicio: Crea un botón que muestre un mensaje pasado por argumento al Composable, y que muestre un Toast al hacer click. [Resultado: `MyButton(message: String)` en el `MainActivity.kt`]
 
 ### 1.2 @Preview
-Para tener laapariencia de nuestro componente
-Se pueden crear varios previews.
+Para tener la apariencia de nuestro componente. Se pueden crear varios previews.
 
 ## 2. Layouts
 La importancia del posicionamiento de componentes.
 
 ### 2.1 Box
-### 2.2 Columm
-### 2.3 Row
+[Ejemplo `MyBox()` en el `MainActivity.kt`]
 
-* 2. Ejercicio: Crea una columna con 2 TextFields y un botón.
+### 2.2 Columm
+[Ejemplo `MyColumn()` en el `MainActivity.kt`]
+
+### 2.3 Row
+* 2. Ejercicio: Crea una columna con 2 TextFields y un botón. [Resultado: `SimpleLogin()` en el `MainActivity.kt`]
 
 IMAGEN [`1. Compose vs XML`]
 
 ## 3. Modifier
 Nos permite añadir comportamiento a los elementos de nuestra UI.
+
+[Ejemplo `MyTextButton()` en el `MainActivity.kt`]
 
 • Decora o añade comportamiento a los elementos de UI
 • Formato builder
@@ -137,3 +141,4 @@ Añadimos el `ModalNavigationDrawer` en el fichero `ItemListScaffold.kt` y en mi
 Añadimos la dependecia: buscamos `androidx.lifecycle` y seleccionamos `lifecycle-viewmodel-compose`
 
 Lo hemos dividido en carpetas separadas entre la vista del `Listado`, y del `Login` cada una con su correspondiente `lógica` pasada de la `UI` a su correspondiente `View Model`.
+

@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import es.upsa.mimo.cursocompose.ui.screens.itemList.MyScaffold
-import es.upsa.mimo.cursocompose.ui.screens.login.Ejer4ExtraLogin
+import es.upsa.mimo.cursocompose.ui.screens.login.LoginForm
 
 @Composable
 fun MyNavegacion() {
@@ -18,7 +18,7 @@ fun MyNavegacion() {
         startDestination = "login"){
 
         composable(route = "login") {
-            Ejer4ExtraLogin(onLogin = { navController.navigate("itemList") })
+            LoginForm(onLogin = { navController.navigate("itemList") })
         }
 
         composable(route = "itemList") {

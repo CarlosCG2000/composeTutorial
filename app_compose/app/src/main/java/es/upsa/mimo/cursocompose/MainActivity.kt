@@ -1,11 +1,12 @@
 package es.upsa.mimo.cursocompose
 
 import android.content.res.Configuration
-
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -33,8 +35,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.ui.screens.itemList.Item
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
@@ -48,7 +52,8 @@ class MainActivity : ComponentActivity() {
 //            CursoComposeTheme { // El tema que va a tener toda mi app
 //                Screen {
 //            Scaffold {
-            MyNavegacion()
+             MyNavegacion()
+
 //            }
                 }
 //            }
@@ -56,40 +61,43 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/** 1. Ejercicio: Crea un botón que muestre un mensaje pasado por argumento al Composable, y que muestre un Toast al hacer click.*/
 @Composable
 fun MyButton(message: String) {
-
-    val context =  LocalContext.current
+    // Contexto que hay que darle al 'Toast'.
+    val context =  LocalContext.current // El contexto tiene que estar dentro de una UI (Compose), si intentamos definirlo dentro del `makeText` dara error porque ya no se encontraria en una UI.
 
     Button(
         onClick = {
-            Toast.makeText(context,
+            Toast.makeText(context /** LocalContext.current */,
                             message,
                             Toast.LENGTH_SHORT).show()
                   },
-        modifier = Modifier.padding(top = 300.dp)
+        modifier = Modifier.padding(top = 300.dp, start = 150.dp)
     ) {
-        Icon(imageVector = Icons.Default.Email, contentDescription = "Icono de mail")
+        Icon(imageVector = Icons.Default.Email, contentDescription = "Icono del email")
         Spacer(modifier = Modifier.width(4.dp) )
-        Text(message)
+        Text("Enviar")
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MyBox(){
-    Box( modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    Box( modifier = Modifier.fillMaxSize()
+                            .background(Color.Cyan),
+        contentAlignment = Alignment.Center,
     ) {
-        Text("Hello")
-        Text("Goodbye", Modifier.align(Alignment.CenterEnd))
+        Text(text = "Hello", fontFamily = FontFamily.SansSerif, fontSize = 35.sp)
+        Text("Goodbye", Modifier.align(Alignment.CenterEnd).padding(end = 20.dp))
     }
 }
 
 @Composable
-fun MyColumn(){ // EL ROW ES IGUAL
+fun MyColumn(){ // En el Row seria similar
     Column (modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment =  Alignment.CenterHorizontally
+            verticalArrangement = Arrangement.SpaceEvenly, // .SpaceBetween, .Center,
+            horizontalAlignment =  Alignment.CenterHorizontally
     ) {
         Text("Hello", /*modifier = Modifier.weight(2f)*/)
         Text("Goodbye")
@@ -100,8 +108,9 @@ fun MyColumn(){ // EL ROW ES IGUAL
     }
 }
 
+/** 2. Ejercicio: Crea una columna con 2 TextFields y un botón. */
 @Composable
-fun Ejer2Login() {
+fun SimpleLogin() {
     Column(modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -124,10 +133,12 @@ fun MyTextButton() {
                 .wrapContentSize() // lo que mida le texto
                 .clickable {}
 
+                // Crear un borde y un fondo
                 .border(2.dp, Color.Blue)
                 .background(Color.Cyan)
                 .padding(30.dp)
 
+                // Crear otro borde con otro fondo, viendo se ahora ambos
                 .border(2.dp, Color.Red)
                 .background(Color.LightGray)
                 .padding(20.dp)
@@ -135,7 +146,7 @@ fun MyTextButton() {
 }
 
 @Composable
-fun MyLogin() {
+fun MyLoginState() {
     // Estado que hay que prooveer por defecto.
     // var user: String = "" // no funciona
     var user by rememberSaveable { mutableStateOf("") }
@@ -148,14 +159,15 @@ fun MyLogin() {
 
         TextField(value = user, onValueChange = { user = it } )
 
-        TextField(value = password, onValueChange = { password = it})
+        TextField(value = password, onValueChange = { password = it })
 
-        Button(onClick = {}){ Text("Registrar")}
+        Button(onClick = {}){ Text("Registrar") }
     }
 }
 
+/** 3 Ejercicio: Crea un state para cada uno de los TextFields. Activa el botón solo si los dos campos tienen datos, y cuando se haga click, muestra un Toast y borra los campos. */
 @Composable
-fun Ejer3Login() {
+fun MyLoginEnabled() {
 
     var user by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -165,21 +177,20 @@ fun Ejer3Login() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        TextField(value = user, onValueChange = { user = it } )
+        TextField(  value = user,
+                    onValueChange = { user = it } )
 
-        TextField(value = password, onValueChange = { password = it})
+        TextField(  value = password,
+                    onValueChange = { password = it } )
 
-        Button(onClick = {
-                    user = ""
-                    password = ""
-                },
+        Button( onClick = {  user = ""; password = "" },
                 enabled = (user.isNotEmpty() && password.isNotEmpty())
-        ){ Text("Registrar")}
+        ){ Text("Registrar") }
     }
 }
 
-// FORMULARIO
-// Fichero LoginForm.kt --> Ejer4ExtraLogin, PassVisibleIcon, Ejer4ExtraLoginPreview
+/** 4 Ejercicio: Mejorar el ejercicio 3 añadiendo un icono y la comprobación de errores en el formulario. */
+// Fichero 'LoginForm.kt' y 'LoginFormViewModel.kt'
 
 @Composable
 fun Screen(content: @Composable () -> Unit ) { // vista principal que puede recibir otra vista

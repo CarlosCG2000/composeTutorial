@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
-class LoginViewModel: ViewModel() {
+class LoginFormViewModel: ViewModel() {
 
     var state by mutableStateOf(UiState())
         private set
