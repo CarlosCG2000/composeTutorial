@@ -102,14 +102,14 @@ Y en el android Manifest añadimos: `<uses-permission android:name="android.perm
 ## 7. Scaffold
 La barra como la Toolbar.
 
-[Ejemplo `()` en el `screens/itemList/ItemListComplete.kt`]
+[Ejemplo `ItemListComplete` en el `screens/itemList/ItemListComplete.kt`]
 
 ## 8. Navegación
 Añadir la navegación como dependencias: `navigation-compose` implementamos `navigation-compose`
 
 Si estamos en una jerarquía donde todo sea Compose, podemos usar la librería `Navigation-Compose`.
 
-Fichero `Navegations.kt`
+[Fichero `Navegations.kt` ]
 
 ## 9. Temas
 - Colores: un esquema de colores con los colores principales y luego con un esquema de colores
@@ -128,27 +128,31 @@ Pasar los archivos del Gradle (en rubi) (`settings.gradle`) a Kotlin Scripts (en
 Es el `libs.versions.toml`
 
 ## 13. TopAppBar
-Pasamos la `TopAppBar` que teniamos en `ItemListScaffold.kt` a un nuevo archivo `MyTopAppBar.kt`.
+Pasamos la `TopAppBar` que teniamos en `ItemListComplete.kt` a un nuevo archivo `MyTopAppBar.kt`.
+
+[Ejemplo` MyTopAppBar(scrollBehavior: TopAppBarScrollBehavior?, onNavigationClick:() -> Unit)` en el `screens/itemList/components/MyTopAppBar.kt`]
 
 ## 14. Bottom Navigation
 La barra de navegación inferior.
 
-Se realiza en el fichero `ItemListScaffold.kt` dentro del `Scaffold`, la función `BottomNavigation`.
+Se realiza en el fichero `ItemListComplete.kt` dentro del `Scaffold`, la función `BottomNavigation`.
 Tambien se va a tener que editar el `Item.kt` convirtiendolo a función en vez de variable.
+
+[Ejemplo `MyBottomNavigationBar(selectedType: Type, onTypeClick: (Type) -> Unit)` en el `screens/itemList/components/MyBottomNavigationBar.kt`]
 
 ## 15. SnackBar
 Es una barra en la parte inferior indicando una información temporal (equivalente a los antiguos Toast).
 
-Se realiza en el fichero `ItemListScaffold.kt` dentro del `Scaffold`, la función `onItemClick` en el listado.
+Se realiza en el fichero `ItemListComplete.kt` dentro del `Scaffold`, la función `onItemClick` en el listado.
+
 Tambien se va a tener que editar el `ItemList.kt` pasando por parámetro en la lambda para la acción.
 
 ## 16. Navigation Drawer
 Como hacer que aparezca elmenu lateral.
 
-Añadimos el `ModalNavigationDrawer` en el fichero `ItemListScaffold.kt` y en mi `MyTopAppBar` la funcionalidad del click al icono del menu.
+Añadimos el `ModalNavigationDrawer` en el fichero `ItemListComplete.kt` y en mi `MyTopAppBar` la funcionalidad del click al icono del menú.
 
 ## 17. ViewModel
 Añadimos la dependecia: buscamos `androidx.lifecycle` y seleccionamos `lifecycle-viewmodel-compose`
 
 Lo hemos dividido en carpetas separadas entre la vista del `Listado`, y del `Login` cada una con su correspondiente `lógica` pasada de la `UI` a su correspondiente `View Model`.
-

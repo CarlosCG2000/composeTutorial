@@ -50,6 +50,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemListComplete(viewModel: ItemListViewModel = viewModel()) {
+// ____________________________________ ____________________________________ ____________________________________
 
     // - 1. Tipos de 'scrollBehavior', como se ve el 'topBar' según vas desplazando la lista ('ItemList')
     // enterAlwaysScrollBehavior(): para que cuando se suba vaya apareciendo lentamente
@@ -66,6 +67,8 @@ fun ItemListComplete(viewModel: ItemListViewModel = viewModel()) {
 
     // - 4. Desplazamiento del menú por defecto (en el 'topBar')
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed) // que este cerrado al entrar a la vista
+
+// ____________________________________ ____________________________________ ____________________________________
 
     ModalNavigationDrawer( // Contener el desplazamiento del menú (el icono en el 'topBar' a la izquierda de las 3 rallitas)
         drawerContent = {

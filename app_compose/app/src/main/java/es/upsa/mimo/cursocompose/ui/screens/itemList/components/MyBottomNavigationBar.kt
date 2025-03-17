@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import es.upsa.mimo.cursocompose.ui.screens.itemList.Type
 
 @Composable
-fun MyBottomNavigationBar(selectedType: Type, onTypeClick: (Type) -> Unit ) {
+fun MyBottomNavigationBar( selectedType: Type, onTypeClick: (Type) -> Unit ) {
 //    BottomAppBar(tonalElevation = 5.dp) {
 //        IconButton(onClick = {}) {
 //            Icon(imageVector = Icons.Default.Search, contentDescription = null)
