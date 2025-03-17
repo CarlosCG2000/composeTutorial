@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.NavegacionApp
 import es.upsa.mimo.cursocompose.ui.screens.itemList.Item
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
@@ -52,8 +53,8 @@ class MainActivity : ComponentActivity() {
 //            CursoComposeTheme { // El tema que va a tener toda mi app
 //                Screen {
 //            Scaffold {
-              MyNavegacion()
-
+              // MyNavegacion()
+            NavegacionApp()
 //            }
                 }
 //            }
@@ -226,12 +227,8 @@ fun SimpleLazyColumn(items: List<Item>) {
     }
 }
 
-// 'fun MyListWithImage()' en 'Itemlist.kt'
-
-// 'fun MyScaffold()' en 'ItemListComplete.kt'
-
-// 'fun MyNavegacion()' en 'Navegacions'
-
+// Mi esqueleto y mi distribución
+// ...
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 // @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Modo Oscuro")
 @Composable
