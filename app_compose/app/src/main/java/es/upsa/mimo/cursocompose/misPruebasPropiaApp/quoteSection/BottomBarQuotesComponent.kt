@@ -1,4 +1,4 @@
-package es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection
+package es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -10,13 +10,13 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import es.upsa.mimo.cursocompose.misPruebasPropiaApp.characterSection.CharactersScreen
 
 @Composable
-fun BottomBarEpisodeComponent(selectedBarButtom:Int = 1,
-                              navigateToAllEpisodes: () -> Unit,
-                              navigateToFiltersEpisode: () -> Unit,
-                              navigateToFavoritesEpisode: () -> Unit
+fun BottomBarQuoteComponent(selectedBarButtom:Int = 1,
+                              navigateToQuotes: () -> Unit,
+                              navigateToFiltersQuotes: () -> Unit,
+                              navigateToFavoritesQuotes: () -> Unit,
+                                navigateToGameQuotes: () -> Unit
                             ) {
 
     NavigationBar { // Barra de navegación
@@ -27,8 +27,8 @@ fun BottomBarEpisodeComponent(selectedBarButtom:Int = 1,
                 Icon(   imageVector = Icons.Default.Addchart,
                         contentDescription = "Icono del Lista Completa")
             },
-            label = { "Lista Completa" },
-            onClick = { navigateToAllEpisodes() },
+            label = { "Lista de 10 citas" },
+            onClick = { navigateToQuotes() },
         )
 
         NavigationBarItem( // Elemento de la barra de navegacion (la tenemos puesta en BottomBar)
@@ -38,7 +38,7 @@ fun BottomBarEpisodeComponent(selectedBarButtom:Int = 1,
                     contentDescription = "Icono del Lista Filtro")
             },
             label = { "Lista Filtro" },
-            onClick = { navigateToFiltersEpisode() },
+            onClick = { navigateToFiltersQuotes() },
         )
 
         NavigationBarItem( // Elemento de la barra de navegacion (la tenemos puesta en BottomBar)
@@ -48,7 +48,17 @@ fun BottomBarEpisodeComponent(selectedBarButtom:Int = 1,
                     contentDescription = "Icono del Lista Fav")
             },
             label = { "Lista Fav" },
-            onClick = { navigateToFavoritesEpisode() },
+            onClick = { navigateToFavoritesQuotes() },
+        )
+
+        NavigationBarItem( // Elemento de la barra de navegacion (la tenemos puesta en BottomBar)
+            selected = selectedBarButtom == 3, // solo marcamos como seleccionada a un tipo (al principio el por defecto)
+            icon = {
+                Icon(   imageVector = Icons.Default.Filter,
+                    contentDescription = "Icono del Lista Fav")
+            },
+            label = { "Lista Fav" },
+            onClick = { navigateToGameQuotes() },
         )
 
     }
@@ -56,8 +66,8 @@ fun BottomBarEpisodeComponent(selectedBarButtom:Int = 1,
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
-fun BottomBarEpisodeComponentPreview() {
+fun BottomBarQuoteComponentPreview() {
     Column {
-        BottomBarEpisodeComponent(1, {}, {}, {})
+        BottomBarQuoteComponent(1, {}, {}, {}, {})
     }
 }

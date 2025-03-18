@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
 fun EpisodesScreen(selectedBarButtom:Int = 1,
@@ -31,7 +32,12 @@ fun EpisodesScreen(selectedBarButtom:Int = 1,
 
     Scaffold(
             bottomBar = {
-                BottomBarEpisodeComponent(selectedBarButtom, navigateToAllEpisodes, navigateToFilterEpisode, navigateToFavoriteEpisode)
+                BottomBarComponent(
+                    selectedBarButtom,
+                    navigateToAllEpisodes,
+                    navigateToFilterEpisode,
+                    navigateToFavoriteEpisode
+                )
             }
         ) { paddingValues ->
             Box(modifier = Modifier.fillMaxSize()

@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.characterSection.CharacterFilterScreen
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.characterSection.CharactersFavScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.menuSection.MenuScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.QuotesScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection.EpisodesFilterScreen
@@ -58,7 +60,27 @@ fun NavegacionApp() {
 
         //________________________ CHARACTER (SCREENS 3) ________________________
         composable(route = "navigateToAllCharacter") {
-            CharactersScreen()
+            CharactersScreen(
+                navigateToAllCharacters = {  },
+                navigateToFilterCharacters = { navController.navigate("navigateToFilterCharacter") },
+                navigateToFavoriteCharacters = { navController.navigate("navigateToFavoriteCharacter") },
+            )
+        }
+
+        composable(route = "navigateToFilterCharacter") {
+            CharacterFilterScreen(
+                navigateToAllCharacters = { navController.navigate("navigateToAllCharacter") },
+                navigateToFilterCharacters = { },
+                navigateToFavoriteCharacters = { navController.navigate("navigateToFavoriteCharacter") },
+            )
+        }
+
+        composable(route = "navigateToFavoriteCharacter") {
+            CharactersFavScreen(
+                navigateToAllCharacters = { navController.navigate("navigateToAllCharacter") },
+                navigateToFilterCharacters = { navController.navigate("navigateToFilterCharacter") },
+                navigateToFavoriteCharacters = { }
+            )
         }
 
         //________________________ EPISODE (SCREENS 4) ________________________
@@ -101,6 +123,8 @@ fun NavegacionApp() {
         composable(route = "navigateToAllQuote") {
             QuotesScreen()
         }
+
+        
 
     }
 }

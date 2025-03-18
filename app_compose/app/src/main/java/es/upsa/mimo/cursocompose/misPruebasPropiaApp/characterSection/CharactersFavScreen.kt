@@ -19,15 +19,15 @@ import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
-fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
-                        navigateToFilterCharacters: () -> Unit,
-                        navigateToFavoriteCharacters: () -> Unit
+fun CharactersFavScreen(navigateToAllCharacters: () -> Unit,
+                          navigateToFilterCharacters: () -> Unit,
+                          navigateToFavoriteCharacters: () -> Unit
 ) {
 
     Scaffold(
         bottomBar = {
             BottomBarComponent(
-                1,
+                3,
                 navigateToAllCharacters,
                 navigateToFilterCharacters,
                 navigateToFavoriteCharacters
@@ -37,7 +37,7 @@ fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
         Box(
             modifier = Modifier.fillMaxSize()
                 .padding(paddingValues)
-                .background(Color.Gray),
+                .background(Color.Red),
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -46,7 +46,7 @@ fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) { // Centra horizontalmente
                 // LOGO SIMPSONS
-                Text("NavegacionPersonajes", fontSize = 24.sp, fontWeight = Bold)
+                Text("NavegacionFavoritosPersonajes", fontSize = 24.sp, fontWeight = Bold)
             }
         }
     }
@@ -54,8 +54,8 @@ fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
-fun CharactersScreenPreview() {
+fun CharactersFavScreenPreview() {
     Column {
-        CharactersScreen({},{},{})
+        CharactersFavScreen({},{},{})
     }
 }
