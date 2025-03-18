@@ -78,13 +78,15 @@ fun NavegacionApp() {
         //________________________ PROFILE (SCREENS 2) ________________________
         composable(Screen.Profile.route) {
             ProfileScreen(
-                onNavigationProfileForm = { navController.navigate(Screen.ProfileEdit.route) }
+                onNavigationProfileForm = { navController.navigate(Screen.ProfileEdit.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
         composable(Screen.ProfileEdit.route) {
             ProfileEditScreen(
-                onLogin = { navController.navigate(Screen.Profile.route) }
+                onLogin = { navController.navigate(Screen.Profile.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -93,6 +95,7 @@ fun NavegacionApp() {
             CharactersScreen(
                 navigateToFilterCharacters = { navController.navigate(Screen.FilterCharacters.route) },
                 navigateToFavoriteCharacters = { navController.navigate(Screen.FavoriteCharacters.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -100,13 +103,15 @@ fun NavegacionApp() {
             CharacterFilterScreen(
                 navigateToAllCharacters = { navController.navigate(Screen.AllCharacters.route) },
                 navigateToFavoriteCharacters = { navController.navigate(Screen.FavoriteCharacters.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
         composable(Screen.FavoriteCharacters.route) {
             CharactersFavScreen(
                 navigateToAllCharacters = { navController.navigate(Screen.AllCharacters.route) },
-                navigateToFilterCharacters = { navController.navigate(Screen.FilterCharacters.route) }
+                navigateToFilterCharacters = { navController.navigate(Screen.FilterCharacters.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -139,14 +144,17 @@ fun NavegacionApp() {
         }
 
         // ✅ 2. Antes pasaba el id del episodio a la 'EpisodeDetailScreen' con Serializable y toRoute(), lo cual es una estrategia válida, pero puede simplificarse usando la navegación de 'Jetpack Compose' de forma nativa.  Usando 'NavArgument' para pasar parámetros.
-        composable(
-            // Contiene un parámetro dinámico dentro de la ruta "{id}", que será reemplazado por un valor real en tiempo de ejecución.
-            route = Screen.EpisodeDetailStatic.route,
-            // Espera un argumento llamado "id", que debe ser de tipo Int.
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        // route = Contiene un parámetro dinámico dentro de la ruta "{id}", que será reemplazado por un valor real en tiempo de ejecución.
+        // arguments = Espera un argumento llamado "id", que debe ser de tipo Int.
+        composable( route = Screen.EpisodeDetailStatic.route,
+                    arguments = listOf(navArgument("id") { type = NavType.IntType })
         ) { navBackStackEntry -> // Es el objeto que contiene la información sobre la pantalla a la que se ha navegado. Permite acceder a los argumentos de la ruta.
             val id = navBackStackEntry.arguments?.getInt("id") ?: 0 // Recupera el argumento "id" pasado en la navegación.
-            EpisodeDetailScreen(id = id) // Llama a la pantalla EpisodeDetailScreen, pasándole el id obtenido de la navegación.
+
+            EpisodeDetailScreen(
+                id = id, // Llama a la pantalla EpisodeDetailScreen, pasándole el id obtenido de la navegación.
+                navigationArrowBack = { navController.popBackStack() } // volver a la pantalla anterior en la pila de navegación. Elimina la pantalla actual de la pila de navegación y vuelve a la anterior. Si la pantalla actual fue la primera de la pila, no hace nada (no crashea).
+            )
         }
 
         /**

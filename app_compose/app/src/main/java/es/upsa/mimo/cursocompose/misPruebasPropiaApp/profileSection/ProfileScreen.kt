@@ -19,11 +19,12 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun ProfileScreen(onNavigationProfileForm:() -> Unit) {
+fun ProfileScreen(onNavigationProfileForm:() -> Unit,  navigationArrowBack:() -> Unit) {
     Scaffold(
         topBar = {
             TopBarProfileComponent(
-                onNavigationProfileForm = onNavigationProfileForm)
+                onNavigationProfileForm = onNavigationProfileForm,
+                onNavigationArrowBack = navigationArrowBack)
         }) { paddingValues ->  // 👈 Recibe el padding generado por Scaffold
 
         Box(modifier = Modifier.fillMaxSize()
@@ -44,5 +45,5 @@ fun ProfileScreen(onNavigationProfileForm:() -> Unit) {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun ProfileScreenPreview() {
-    ProfileScreen({})
+    ProfileScreen({}, {})
 }

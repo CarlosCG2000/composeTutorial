@@ -2,6 +2,7 @@ package es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection
 
 import android.content.res.Configuration
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -13,11 +14,18 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBarProfileComponent(onNavigationProfileForm:() -> Unit /**Para el el icono del menú*/) {
+fun TopBarProfileComponent(onNavigationArrowBack:() -> Unit, onNavigationProfileForm:() -> Unit /**Para el el icono del menú*/) {
 
     TopAppBar( // Puede ser tambien: CenterAlignedTopAppBar, MediumTopAppBar, LargeTopAppBar
 
         title = { Text("Usuario Carlos C") },
+
+        navigationIcon = { // Icono del menú
+            IconButton(onClick = onNavigationArrowBack) {
+                Icon(   imageVector = Icons.Default.ArrowBackIosNew,
+                    contentDescription = "Icono de regreso al menú")
+            }
+        },
 
         actions = {
             // Text("Edit")
@@ -36,6 +44,6 @@ fun TopBarProfileComponent(onNavigationProfileForm:() -> Unit /**Para el el icon
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun TopBarProfileComponentPreview() {
-    TopBarProfileComponent({})
+    TopBarProfileComponent({}, {})
 }
 

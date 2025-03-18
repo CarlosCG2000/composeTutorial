@@ -17,10 +17,12 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.TopBarComponent
 
 @Composable
 fun CharactersScreen(   navigateToFilterCharacters: () -> Unit,
-                        navigateToFavoriteCharacters: () -> Unit
+                        navigateToFavoriteCharacters: () -> Unit,
+                        navigationArrowBack:() -> Unit
 ) {
 
     Scaffold(
@@ -30,6 +32,11 @@ fun CharactersScreen(   navigateToFilterCharacters: () -> Unit,
                 { },
                 navigateToFilterCharacters,
                 navigateToFavoriteCharacters
+            )
+        }, topBar = {
+            TopBarComponent(
+                title = "Listado de Personajes Fav",
+                onNavigationArrowBack = navigationArrowBack
             )
         }
     ) { paddingValues ->
@@ -56,6 +63,6 @@ fun CharactersScreen(   navigateToFilterCharacters: () -> Unit,
 @Composable
 fun CharactersScreenPreview() {
     Column {
-        CharactersScreen({},{})
+        CharactersScreen({},{}, {})
     }
 }
