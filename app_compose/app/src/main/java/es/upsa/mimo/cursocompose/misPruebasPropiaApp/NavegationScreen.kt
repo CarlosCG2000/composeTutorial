@@ -17,6 +17,9 @@ import es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection.EpisodeDetai
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.ProfileScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection.EpisodesScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.profileEdit.ProfileEditScreen
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.QuotesFavScreen
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.QuotesFilterScreen
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.QuotesGameScreen
 import kotlinx.serialization.Serializable
 
 // Definición de destinos a través de objetos o clases (con parámetros que representan propiedades)
@@ -128,7 +131,7 @@ fun NavegacionApp() {
                 navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
             )
         }
-        
+
         composable(route = "navigateToFilterQuotes") {
             QuotesFilterScreen(
                 navigateToQuotes = { navController.navigate("navigateToAllQuote") },

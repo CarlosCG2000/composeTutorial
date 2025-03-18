@@ -4,6 +4,8 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Addchart
+import androidx.compose.material.icons.filled.Album
+import androidx.compose.material.icons.filled.Factory
 import androidx.compose.material.icons.filled.Filter
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -34,7 +36,7 @@ fun BottomBarQuoteComponent(selectedBarButtom:Int = 1,
         NavigationBarItem( // Elemento de la barra de navegacion (la tenemos puesta en BottomBar)
             selected = selectedBarButtom == 2, // solo marcamos como seleccionada a un tipo (al principio el por defecto)
             icon = {
-                Icon(   imageVector = Icons.Default.Filter,
+                Icon(   imageVector = Icons.Default.Factory,
                     contentDescription = "Icono del Lista Filtro")
             },
             label = { "Lista Filtro" },
@@ -54,7 +56,7 @@ fun BottomBarQuoteComponent(selectedBarButtom:Int = 1,
         NavigationBarItem( // Elemento de la barra de navegacion (la tenemos puesta en BottomBar)
             selected = selectedBarButtom == 3, // solo marcamos como seleccionada a un tipo (al principio el por defecto)
             icon = {
-                Icon(   imageVector = Icons.Default.Filter,
+                Icon(   imageVector = Icons.Default.Album,
                     contentDescription = "Icono del Lista Fav")
             },
             label = { "Lista Fav" },

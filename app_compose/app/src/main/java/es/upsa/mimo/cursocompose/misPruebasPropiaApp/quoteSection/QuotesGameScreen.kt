@@ -16,11 +16,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
-import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.ProfileScreen
 
 @Composable
-fun QuotesScreen(
+fun QuotesGameScreen(
     navigateToQuotes: () -> Unit,
     navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
@@ -29,35 +27,35 @@ fun QuotesScreen(
     Scaffold(
         bottomBar = {
             BottomBarQuoteComponent(
-                    selectedBarButtom = 1,
-                    navigateToQuotes= navigateToQuotes,
-                    navigateToFiltersQuotes= navigateToFilterQuotes,
-                    navigateToFavoritesQuotes = navigateToFavoriteQuotes,
-                    navigateToGameQuotes = navigateToGameQuotes
+                selectedBarButtom = 4,
+                navigateToQuotes= navigateToQuotes,
+                navigateToFiltersQuotes= navigateToFilterQuotes,
+                navigateToFavoritesQuotes = navigateToFavoriteQuotes,
+                navigateToGameQuotes = navigateToGameQuotes
             )
         }
     ) { paddingValues ->
         Box(
             modifier = Modifier.fillMaxSize()
                 .padding(paddingValues)
-                .background(Color.Green),
+                .background(Color.Red),
             contentAlignment = Alignment.Center
         ) {
 
-                Column(
-                    modifier = Modifier.fillMaxSize(), // Ocupa toda la pantalla
-                    verticalArrangement = Arrangement.Center, // Centra verticalmente dentro de Column
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) { // Centra horizontalmente
-                    // LOGO SIMPSONS
-                    Text("NavegacionCitas", fontSize = 24.sp, fontWeight = Bold)
-                }
+            Column(
+                modifier = Modifier.fillMaxSize(), // Ocupa toda la pantalla
+                verticalArrangement = Arrangement.Center, // Centra verticalmente dentro de Column
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) { // Centra horizontalmente
+                // LOGO SIMPSONS
+                Text("NavegacionCitas", fontSize = 24.sp, fontWeight = Bold)
             }
         }
     }
+}
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
-fun QuoteScreenPreview() {
-    QuotesScreen({}, {}, {}, {})
+fun QuotesGameScreenPreview() {
+    QuotesGameScreen({}, {}, {}, {})
 }
