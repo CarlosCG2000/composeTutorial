@@ -32,5 +32,5 @@ fun QuotesScreen() {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuoteScreenPreview() {
-    ProfileScreen()
+    QuotesScreen()
 }

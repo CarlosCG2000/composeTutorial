@@ -1,6 +1,5 @@
 package es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun EpisodesFilterScreen(selectedBarButtom:Int = 2,
                          navigateToAllEpisodes: () -> Unit,
@@ -36,13 +34,18 @@ fun EpisodesFilterScreen(selectedBarButtom:Int = 2,
         bottomBar = {
             BottomBarEpisodeComponent(selectedBarButtom, navigateToAllEpisodes, navigateToFilterEpisode, navigateToFavoriteEpisode)
         }
-    ) {
-        Box(modifier = Modifier.fillMaxSize().background(Color.Yellow), contentAlignment = Alignment.Center) {
+    ) { paddingValues ->
+        Box(modifier = Modifier.fillMaxSize()
+                                .padding(paddingValues)
+                                .background(Color.Yellow),
+            contentAlignment = Alignment.Center) {
+
             Column(modifier = Modifier.fillMaxSize(), // Ocupa toda la pantalla
                 verticalArrangement = Arrangement.Center, // Centra verticalmente dentro de Column
                 horizontalAlignment = Alignment.CenterHorizontally){ // Centra horizontalmente
                 // LOGO SIMPSONS
                 Text("NavegacionEpisodios", fontSize = 24.sp, fontWeight = Bold)
+
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     itemsIndexed(listItems) { index, item ->
                         Text(

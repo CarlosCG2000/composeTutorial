@@ -55,8 +55,9 @@ fun MenuScreen( /** 4 navegaciones */
                 )
             }
 
-        ) {
-            Box(modifier = Modifier.padding(it), contentAlignment = Alignment.Center) {
+        ) { paddingValues ->
+            Box(modifier = Modifier.padding(paddingValues),
+                contentAlignment = Alignment.Center) {
                 Column(modifier = Modifier.fillMaxSize(), // Ocupa toda la pantalla
                     verticalArrangement = Arrangement.Center, // Centra verticalmente dentro de Column
                     horizontalAlignment = Alignment.CenterHorizontally){ // Centra horizontalmente

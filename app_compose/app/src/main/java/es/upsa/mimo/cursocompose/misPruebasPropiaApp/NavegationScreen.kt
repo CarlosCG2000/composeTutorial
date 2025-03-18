@@ -14,12 +14,15 @@ import es.upsa.mimo.cursocompose.misPruebasPropiaApp.characterSection.Characters
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection.EpisodeDetailScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.ProfileScreen
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.episodeSection.EpisodesScreen
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.profileEdit.ProfileEditScreen
 import kotlinx.serialization.Serializable
 
 // Definición de destinos a través de objetos o clases (con parámetros que representan propiedades)
 @Serializable
 class EpisodeDetailScreenDestination(val id: Int) // Destino de la vista de una de episodio en detalle
 
+//@Serializable
+//class GameFiveQuestionsScreenDestination(val questions: List<>)
 
 @Composable
 fun NavegacionApp() {
@@ -42,7 +45,15 @@ fun NavegacionApp() {
 
         //________________________ PROFILE (SCREENS 2) ________________________
         composable(route = "profileScreen") {
-            ProfileScreen()
+            ProfileScreen(
+                onNavigationProfileForm = { navController.navigate("profileEditScreen") }
+            )
+        }
+
+        composable(route = "profileEditScreen") {
+            ProfileEditScreen(
+                onLogin = { navController.navigate("profileScreen") }
+            )
         }
 
         //________________________ CHARACTER (SCREENS 3) ________________________
@@ -52,7 +63,6 @@ fun NavegacionApp() {
 
         //________________________ EPISODE (SCREENS 4) ________________________
         composable(route = "navigateToAllEpisodes") {
-
             EpisodesScreen(
                 navigateToAllEpisodes = { },
                 navigateToFilterEpisode = { navController.navigate("navigateToFilterEpisode") },
