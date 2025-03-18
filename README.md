@@ -1,7 +1,7 @@
 
 # Jetpack Compose
 
-# ____________________ PARTE 1 ____________________
+# _______ PARTE 1 _______
 
 ## ¿Qué es?
 • Sistema de una interfaz declarativa a través de funciones.
@@ -116,7 +116,7 @@ Si estamos en una jerarquía donde todo sea Compose, podemos usar la librería `
 - Tipografías
 - Formas
 
-# ____________________ PARTE 2 ____________________
+# _______ PARTE 2 _______
 
 ## 10. Dependencias BOM (`ya por defecto`)
 Lo que nos permite es gestionar la dependecias de varias librerias que trabajan en común de forma conjunta de forma que ese `BOM`, siempre nos va a devolver las versiones de las dependecias que pueden trabajar entre ellas sin conflictos.
