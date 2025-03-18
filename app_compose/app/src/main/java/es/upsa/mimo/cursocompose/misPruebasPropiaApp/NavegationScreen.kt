@@ -125,7 +125,7 @@ fun NavegacionApp() {
         //________________________ QUOTE AND GAME (SCREENS 4-2) ________________________
         composable(route = "navigateToAllQuote") {
             QuotesScreen(
-                navigateToQuotes = { navController.navigate("navigateToAllQuote") },
+                navigateToQuotes = { },
                 navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
                 navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
                 navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
@@ -135,7 +135,7 @@ fun NavegacionApp() {
         composable(route = "navigateToFilterQuotes") {
             QuotesFilterScreen(
                 navigateToQuotes = { navController.navigate("navigateToAllQuote") },
-                navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
+                navigateToFilterQuotes = { },
                 navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
                 navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
             )
@@ -145,7 +145,7 @@ fun NavegacionApp() {
             QuotesFavScreen(
                 navigateToQuotes = { navController.navigate("navigateToFilterQuotes") },
                 navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
-                navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
+                navigateToFavoriteQuotes = { },
                 navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
             )
         }
@@ -155,10 +155,22 @@ fun NavegacionApp() {
                 navigateToQuotes = { navController.navigate("navigateToAllQuote") },
                 navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
                 navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
-                navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
+                navigateToGameQuotes = { },
+                navigateToQuestionQuotes = { navController.navigate("navigateToQuestionQuotes") }
             )
         }
 
+//        composable(route = "navigateToQuestionQuotes") {
+//            QuotesQuestionScreen(
+//                navigateToResultQuotes = { navController.navigate("navigateToResultQuotes") }
+//            )
+//        }
+//
+//        composable(route = "navigateToResultQuotes") {
+//            QuotesResultScreen(
+//                navigateToQuotes = { navController.navigate("navigateToAllQuote") }
+//            )
+//        }
     }
 }
 

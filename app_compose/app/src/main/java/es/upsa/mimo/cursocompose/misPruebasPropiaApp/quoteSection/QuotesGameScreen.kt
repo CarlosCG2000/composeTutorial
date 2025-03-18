@@ -22,7 +22,8 @@ fun QuotesGameScreen(
     navigateToQuotes: () -> Unit,
     navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
-    navigateToGameQuotes: () -> Unit
+    navigateToGameQuotes: () -> Unit,
+    navigateToQuestionQuotes: () -> Unit,
 ) {
     Scaffold(
         bottomBar = {
@@ -57,5 +58,5 @@ fun QuotesGameScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuotesGameScreenPreview() {
-    QuotesGameScreen({}, {}, {}, {})
+    QuotesGameScreen({}, {}, {}, {}, {})
 }
