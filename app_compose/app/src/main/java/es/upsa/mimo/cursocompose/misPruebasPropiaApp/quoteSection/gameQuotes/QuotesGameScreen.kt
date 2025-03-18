@@ -22,7 +22,6 @@ fun QuotesGameScreen(
     navigateToQuotes: () -> Unit,
     navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
-    navigateToGameQuotes: () -> Unit,
     navigateToQuestionQuotes: () -> Unit,
 ) {
     Scaffold(
@@ -32,12 +31,13 @@ fun QuotesGameScreen(
                 navigateToQuotes= navigateToQuotes,
                 navigateToFiltersQuotes= navigateToFilterQuotes,
                 navigateToFavoritesQuotes = navigateToFavoriteQuotes,
-                navigateToGameQuotes = navigateToGameQuotes
+                navigateToGameQuotes = { }
             )
         }
     ) { paddingValues ->
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.Red),
             contentAlignment = Alignment.Center
@@ -58,5 +58,5 @@ fun QuotesGameScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuotesGameScreenPreview() {
-    QuotesGameScreen({}, {}, {}, {}, {})
+    QuotesGameScreen({}, {}, {}, {})
 }
