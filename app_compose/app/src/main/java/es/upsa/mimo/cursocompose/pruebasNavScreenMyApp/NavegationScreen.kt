@@ -156,15 +156,14 @@ fun NavegacionApp() {
                 navigationArrowBack = { navController.popBackStack() } // volver a la pantalla anterior en la pila de navegación. Elimina la pantalla actual de la pila de navegación y vuelve a la anterior. Si la pantalla actual fue la primera de la pila, no hace nada (no crashea).
             )
         }
-
         /**
-                composable<EpisodeDetailScreenDestination>{  navBackStackEntry /* destino */ ->
-                    val episodeDetailScreenDestination: EpisodeDetailScreenDestination = navBackStackEntry.toRoute() // Obtenemos el objeto
+        composable<EpisodeDetailScreenDestination>{  navBackStackEntry /* destino */ ->
+            val episodeDetailScreenDestination: EpisodeDetailScreenDestination = navBackStackEntry.toRoute() // Obtenemos el objeto
 
-                    val id: Int = episodeDetailScreenDestination.id
+            val id: Int = episodeDetailScreenDestination.id
 
-                    EpisodeDetailScreen(id = id)
-                }
+            EpisodeDetailScreen(id = id)
+        }
         */
 
         //________________________ QUOTE AND GAME (SCREENS 4-2) ________________________
