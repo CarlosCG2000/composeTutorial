@@ -20,7 +20,6 @@ import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
 fun CharacterFilterScreen(navigateToAllCharacters: () -> Unit,
-                          navigateToFilterCharacters: () -> Unit,
                           navigateToFavoriteCharacters: () -> Unit
 ) {
     Scaffold(
@@ -28,13 +27,14 @@ fun CharacterFilterScreen(navigateToAllCharacters: () -> Unit,
             BottomBarComponent(
                 2,
                 navigateToAllCharacters,
-                navigateToFilterCharacters,
+                { },
                 navigateToFavoriteCharacters
             )
         }
     ) { paddingValues ->
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.Magenta),
             contentAlignment = Alignment.Center
@@ -55,6 +55,6 @@ fun CharacterFilterScreen(navigateToAllCharacters: () -> Unit,
 @Composable
 fun CharacterFilterScreenPreview() {
     Column {
-        CharacterFilterScreen({},{},{})
+        CharacterFilterScreen({},{})
     }
 }

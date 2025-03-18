@@ -22,9 +22,7 @@ import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
-fun EpisodesScreen(selectedBarButtom:Int = 1,
-                   navigateToAllEpisodes: () -> Unit,
-                   navigateToFilterEpisode: () -> Unit,
+fun EpisodesScreen(navigateToFilterEpisode: () -> Unit,
                    navigateToFavoriteEpisode: () -> Unit,
                    onEpisodeSelected: (Int) -> Unit) {
 
@@ -33,19 +31,22 @@ fun EpisodesScreen(selectedBarButtom:Int = 1,
     Scaffold(
             bottomBar = {
                 BottomBarComponent(
-                    selectedBarButtom,
-                    navigateToAllEpisodes,
+                    1,
+                    { },
                     navigateToFilterEpisode,
                     navigateToFavoriteEpisode
                 )
             }
         ) { paddingValues ->
-            Box(modifier = Modifier.fillMaxSize()
-                                    .padding(paddingValues)
-                                    .background(Color.Red),
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .background(Color.Red),
                 contentAlignment = Alignment.Center) {
 
-                Column(modifier = Modifier.fillMaxSize().padding(top = 60.dp), // Ocupa toda la pantalla
+                Column(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(top = 60.dp), // Ocupa toda la pantalla
                     //verticalArrangement = Arrangement.Center, // Centra verticalmente dentro de Column
                    // horizontalAlignment = Alignment.CenterHorizontally // Centra horizontalmente
                     ){
@@ -56,9 +57,11 @@ fun EpisodesScreen(selectedBarButtom:Int = 1,
                         itemsIndexed(listItems) { index, item ->
                             Text(
                                 text = item,
-                                modifier = Modifier.clickable {
-                                    onEpisodeSelected(index+1) // Ahora puedes obtener la posición del item
-                                }.padding(20.dp)
+                                modifier = Modifier
+                                    .clickable {
+                                        onEpisodeSelected(index + 1) // Ahora puedes obtener la posición del item
+                                    }
+                                    .padding(20.dp)
                             )
                         }
                     }
@@ -72,6 +75,6 @@ fun EpisodesScreen(selectedBarButtom:Int = 1,
 @Composable
 fun EpisodesScreenPreview() {
     Column {
-        EpisodesScreen(1, {}, {}, {}, {})
+        EpisodesScreen( {}, {}, {})
     }
 }

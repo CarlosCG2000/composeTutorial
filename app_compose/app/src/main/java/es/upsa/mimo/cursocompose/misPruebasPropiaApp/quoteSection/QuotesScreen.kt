@@ -21,7 +21,6 @@ import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.ProfileScree
 
 @Composable
 fun QuotesScreen(
-    navigateToQuotes: () -> Unit,
     navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
     navigateToGameQuotes: () -> Unit
@@ -30,7 +29,7 @@ fun QuotesScreen(
         bottomBar = {
             BottomBarQuoteComponent(
                     selectedBarButtom = 1,
-                    navigateToQuotes= navigateToQuotes,
+                    navigateToQuotes= { },
                     navigateToFiltersQuotes= navigateToFilterQuotes,
                     navigateToFavoritesQuotes = navigateToFavoriteQuotes,
                     navigateToGameQuotes = navigateToGameQuotes
@@ -38,7 +37,8 @@ fun QuotesScreen(
         }
     ) { paddingValues ->
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.Green),
             contentAlignment = Alignment.Center
@@ -59,5 +59,5 @@ fun QuotesScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuoteScreenPreview() {
-    QuotesScreen({}, {}, {}, {})
+    QuotesScreen({}, {}, {})
 }

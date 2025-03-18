@@ -1,4 +1,4 @@
-package es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection
+package es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.gameQuotes
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.BottomBarQuoteComponent
 
 @Composable
 fun QuotesGameScreen(
@@ -28,8 +30,8 @@ fun QuotesGameScreen(
         bottomBar = {
             BottomBarQuoteComponent(
                 selectedBarButtom = 4,
-                navigateToQuotes= navigateToQuotes,
-                navigateToFiltersQuotes= navigateToFilterQuotes,
+                navigateToQuotes = navigateToQuotes,
+                navigateToFiltersQuotes = navigateToFilterQuotes,
                 navigateToFavoritesQuotes = navigateToFavoriteQuotes,
                 navigateToGameQuotes = { }
             )
@@ -50,6 +52,10 @@ fun QuotesGameScreen(
             ) { // Centra horizontalmente
                 // LOGO SIMPSONS
                 Text("NavegacionCitas", fontSize = 24.sp, fontWeight = Bold)
+                Button(onClick = navigateToQuestionQuotes) {
+                    Text("BOTON DE IR A LAS PREGUNTAS")
+                }
+
             }
         }
     }

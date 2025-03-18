@@ -24,10 +24,8 @@ import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
 fun EpisodesFavScreen(
-    selectedBarButtom: Int = 3,
     navigateToAllEpisodes: () -> Unit,
     navigateToFilterEpisode: () -> Unit,
-    navigateToFavoriteEpisode: () -> Unit,
     onEpisodeSelected: (Int) -> Unit
 ) {
     val listItems: List<String> = (1..50).map { "Item $it" }
@@ -35,16 +33,17 @@ fun EpisodesFavScreen(
     Scaffold(
         bottomBar = {
             BottomBarComponent(
-                selectedBarButtom,
+                3,
                 navigateToAllEpisodes,
                 navigateToFilterEpisode,
-                navigateToFavoriteEpisode
+                { }
             )
         }
     ) { paddingValues ->
-        Box(modifier = Modifier.fillMaxSize()
-                                .padding(paddingValues)
-                                .background(Color.Blue),
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .background(Color.Blue),
             contentAlignment = Alignment.Center) {
 
             Column(modifier = Modifier.fillMaxSize(), // Ocupa toda la pantalla
@@ -57,9 +56,11 @@ fun EpisodesFavScreen(
                     itemsIndexed(listItems) { index, item ->
                         Text(
                             text = item,
-                            modifier = Modifier.clickable {
-                                onEpisodeSelected(index+1) // Ahora puedes obtener la posición del item
-                            }.padding(20.dp)
+                            modifier = Modifier
+                                .clickable {
+                                    onEpisodeSelected(index + 1) // Ahora puedes obtener la posición del item
+                                }
+                                .padding(20.dp)
                         )
                     }
                 }
@@ -72,6 +73,6 @@ fun EpisodesFavScreen(
 @Composable
 fun EpisodesFavScreenPreview() {
     Column {
-        EpisodesFavScreen(1, {}, {}, {},{})
+        EpisodesFavScreen( {}, {},{})
     }
 }

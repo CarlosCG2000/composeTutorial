@@ -19,8 +19,7 @@ import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
-fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
-                        navigateToFilterCharacters: () -> Unit,
+fun CharactersScreen(   navigateToFilterCharacters: () -> Unit,
                         navigateToFavoriteCharacters: () -> Unit
 ) {
 
@@ -28,14 +27,15 @@ fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
         bottomBar = {
             BottomBarComponent(
                 1,
-                navigateToAllCharacters,
+                { },
                 navigateToFilterCharacters,
                 navigateToFavoriteCharacters
             )
         }
     ) { paddingValues ->
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.Gray),
             contentAlignment = Alignment.Center
@@ -56,6 +56,6 @@ fun CharactersScreen(   navigateToAllCharacters: () -> Unit,
 @Composable
 fun CharactersScreenPreview() {
     Column {
-        CharactersScreen({},{},{})
+        CharactersScreen({},{})
     }
 }

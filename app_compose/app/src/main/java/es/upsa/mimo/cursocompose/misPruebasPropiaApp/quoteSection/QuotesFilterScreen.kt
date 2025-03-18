@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun QuotesFilterScreen(
     navigateToQuotes: () -> Unit,
-    navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
     navigateToGameQuotes: () -> Unit
 ) {
@@ -29,14 +28,15 @@ fun QuotesFilterScreen(
             BottomBarQuoteComponent(
                 selectedBarButtom = 2,
                 navigateToQuotes= navigateToQuotes,
-                navigateToFiltersQuotes= navigateToFilterQuotes,
+                navigateToFiltersQuotes= { },
                 navigateToFavoritesQuotes = navigateToFavoriteQuotes,
                 navigateToGameQuotes = navigateToGameQuotes
             )
         }
     ) { paddingValues ->
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.Magenta),
             contentAlignment = Alignment.Center
@@ -57,5 +57,5 @@ fun QuotesFilterScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuotesFilterScreenPreview() {
-    QuotesFilterScreen({}, {}, {}, {})
+    QuotesFilterScreen({}, {}, {})
 }

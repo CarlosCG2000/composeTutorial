@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.sp
 fun QuotesFavScreen(
     navigateToQuotes: () -> Unit,
     navigateToFilterQuotes: () -> Unit,
-    navigateToFavoriteQuotes: () -> Unit,
     navigateToGameQuotes: () -> Unit
 ) {
     Scaffold(
@@ -30,13 +29,14 @@ fun QuotesFavScreen(
                 selectedBarButtom = 3,
                 navigateToQuotes= navigateToQuotes,
                 navigateToFiltersQuotes= navigateToFilterQuotes,
-                navigateToFavoritesQuotes = navigateToFavoriteQuotes,
+                navigateToFavoritesQuotes = { },
                 navigateToGameQuotes = navigateToGameQuotes
             )
         }
     ) { paddingValues ->
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(paddingValues)
                 .background(Color.Yellow),
             contentAlignment = Alignment.Center
@@ -57,5 +57,5 @@ fun QuotesFavScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuotesFavScreenPreview() {
-    QuotesFavScreen({}, {}, {}, {})
+    QuotesFavScreen({}, {}, {})
 }

@@ -23,9 +23,8 @@ import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
 
 @Composable
-fun EpisodesFilterScreen(selectedBarButtom:Int = 2,
+fun EpisodesFilterScreen(
                          navigateToAllEpisodes: () -> Unit,
-                         navigateToFilterEpisode: () -> Unit,
                          navigateToFavoriteEpisode: () -> Unit,
                          onEpisodeSelected: (Int) -> Unit) {
 
@@ -34,16 +33,17 @@ fun EpisodesFilterScreen(selectedBarButtom:Int = 2,
     Scaffold(
         bottomBar = {
             BottomBarComponent(
-                selectedBarButtom,
+                2,
                 navigateToAllEpisodes,
-                navigateToFilterEpisode,
+                { },
                 navigateToFavoriteEpisode
             )
         }
     ) { paddingValues ->
-        Box(modifier = Modifier.fillMaxSize()
-                                .padding(paddingValues)
-                                .background(Color.Yellow),
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+            .background(Color.Yellow),
             contentAlignment = Alignment.Center) {
 
             Column(modifier = Modifier.fillMaxSize(), // Ocupa toda la pantalla
@@ -56,9 +56,11 @@ fun EpisodesFilterScreen(selectedBarButtom:Int = 2,
                     itemsIndexed(listItems) { index, item ->
                         Text(
                             text = item,
-                            modifier = Modifier.clickable {
-                                onEpisodeSelected(index+1) // Ahora puedes obtener la posición del item
-                            }.padding(20.dp)
+                            modifier = Modifier
+                                .clickable {
+                                    onEpisodeSelected(index + 1) // Ahora puedes obtener la posición del item
+                                }
+                                .padding(20.dp)
                         )
                     }
                 }
@@ -72,6 +74,6 @@ fun EpisodesFilterScreen(selectedBarButtom:Int = 2,
 @Composable
 fun EpisodesFilterScreenPreview() {
     Column {
-        EpisodesFilterScreen(1, {}, {}, {}, {})
+        EpisodesFilterScreen( {}, {}, {})
     }
 }
