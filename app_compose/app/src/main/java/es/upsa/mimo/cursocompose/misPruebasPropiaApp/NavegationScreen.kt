@@ -121,10 +121,40 @@ fun NavegacionApp() {
 
         //________________________ QUOTE AND GAME (SCREENS 4-2) ________________________
         composable(route = "navigateToAllQuote") {
-            QuotesScreen()
+            QuotesScreen(
+                navigateToQuotes = { navController.navigate("navigateToAllQuote") },
+                navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
+                navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
+                navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
+            )
+        }
+        
+        composable(route = "navigateToFilterQuotes") {
+            QuotesFilterScreen(
+                navigateToQuotes = { navController.navigate("navigateToAllQuote") },
+                navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
+                navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
+                navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
+            )
         }
 
-        
+        composable(route = "navigateToFavoriteQuotes") {
+            QuotesFavScreen(
+                navigateToQuotes = { navController.navigate("navigateToFilterQuotes") },
+                navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
+                navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
+                navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
+            )
+        }
+
+        composable(route = "navigateToGameQuotes") {
+            QuotesGameScreen(
+                navigateToQuotes = { navController.navigate("navigateToAllQuote") },
+                navigateToFilterQuotes = { navController.navigate("navigateToFilterQuotes") },
+                navigateToFavoriteQuotes = { navController.navigate("navigateToFavoriteQuotes") },
+                navigateToGameQuotes = { navController.navigate("navigateToGameQuotes") }
+            )
+        }
 
     }
 }
