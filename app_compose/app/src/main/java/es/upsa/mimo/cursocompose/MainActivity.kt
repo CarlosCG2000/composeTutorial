@@ -39,7 +39,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import es.upsa.mimo.cursocompose.misPruebasPropiaApp.NavegacionApp
+import es.upsa.mimo.cursocompose.pruebasNavScreenMyApp.NavegacionApp
 import es.upsa.mimo.cursocompose.ui.screens.itemList.Item
 import es.upsa.mimo.cursocompose.ui.theme.CursoComposeTheme
 
