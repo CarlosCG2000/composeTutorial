@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.TopBarComponent
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.BottomBarQuoteComponent
 
 @Composable
@@ -25,6 +26,7 @@ fun QuotesGameScreen(
     navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
     navigateToQuestionQuotes: () -> Unit,
+    navigationArrowBack:() -> Unit
 ) {
     Scaffold(
         bottomBar = {
@@ -34,6 +36,12 @@ fun QuotesGameScreen(
                 navigateToFiltersQuotes = navigateToFilterQuotes,
                 navigateToFavoritesQuotes = navigateToFavoriteQuotes,
                 navigateToGameQuotes = { }
+            )
+        },
+        topBar = {
+            TopBarComponent(
+                title = "Juego de Citas",
+                onNavigationArrowBack = navigationArrowBack
             )
         }
     ) { paddingValues ->
@@ -64,5 +72,5 @@ fun QuotesGameScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuotesGameScreenPreview() {
-    QuotesGameScreen({}, {}, {}, {})
+    QuotesGameScreen({}, {}, {}, {},{})
 }

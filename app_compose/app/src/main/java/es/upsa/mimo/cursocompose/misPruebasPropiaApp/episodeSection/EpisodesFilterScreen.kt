@@ -21,12 +21,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.TopBarComponent
 
 @Composable
 fun EpisodesFilterScreen(
                          navigateToAllEpisodes: () -> Unit,
                          navigateToFavoriteEpisode: () -> Unit,
-                         onEpisodeSelected: (Int) -> Unit) {
+                         onEpisodeSelected: (Int) -> Unit,
+                         navigationArrowBack:() -> Unit) {
 
     val listItems: List<String> = (1..50).map { "Item $it" }
 
@@ -37,6 +39,11 @@ fun EpisodesFilterScreen(
                 navigateToAllEpisodes,
                 { },
                 navigateToFavoriteEpisode
+            )
+        }, topBar = {
+            TopBarComponent(
+                title = "Listado de Episodios Fav",
+                onNavigationArrowBack = navigationArrowBack
             )
         }
     ) { paddingValues ->
@@ -50,7 +57,7 @@ fun EpisodesFilterScreen(
                 verticalArrangement = Arrangement.Center, // Centra verticalmente dentro de Column
                 horizontalAlignment = Alignment.CenterHorizontally){ // Centra horizontalmente
                 // LOGO SIMPSONS
-                Text("NavegacionEpisodios", fontSize = 24.sp, fontWeight = Bold)
+                // Text("NavegacionEpisodios", fontSize = 24.sp, fontWeight = Bold)
 
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     itemsIndexed(listItems) { index, item ->
@@ -74,6 +81,6 @@ fun EpisodesFilterScreen(
 @Composable
 fun EpisodesFilterScreenPreview() {
     Column {
-        EpisodesFilterScreen( {}, {}, {})
+        EpisodesFilterScreen( {}, {}, {}, {})
     }
 }

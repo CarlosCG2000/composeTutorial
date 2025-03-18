@@ -16,12 +16,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.TopBarComponent
 
 @Composable
 fun QuotesFilterScreen(
     navigateToQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
-    navigateToGameQuotes: () -> Unit
+    navigateToGameQuotes: () -> Unit,
+    navigationArrowBack:() -> Unit
 ) {
     Scaffold(
         bottomBar = {
@@ -31,6 +33,12 @@ fun QuotesFilterScreen(
                 navigateToFiltersQuotes= { },
                 navigateToFavoritesQuotes = navigateToFavoriteQuotes,
                 navigateToGameQuotes = navigateToGameQuotes
+            )
+        },
+        topBar = {
+            TopBarComponent(
+                title = "Listado de Citas Filtrado",
+                onNavigationArrowBack = navigationArrowBack
             )
         }
     ) { paddingValues ->
@@ -57,5 +65,5 @@ fun QuotesFilterScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuotesFilterScreenPreview() {
-    QuotesFilterScreen({}, {}, {})
+    QuotesFilterScreen({}, {}, {}, {})
 }

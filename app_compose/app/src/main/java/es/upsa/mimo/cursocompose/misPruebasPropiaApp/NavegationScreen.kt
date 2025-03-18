@@ -1,6 +1,7 @@
 package es.upsa.mimo.cursocompose.misPruebasPropiaApp
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -26,7 +27,7 @@ import es.upsa.mimo.cursocompose.misPruebasPropiaApp.quoteSection.gameQuotes.Quo
 // ✅ 1. Crear un sealed class para las rutas: en lugar de escribir las rutas como strings, se pueden definir en una sealed class (con parámetros si es necesario):
 // • Evita errores tipográficos en las rutas.
 // • Permite una navegación más clara y estructurada.
-private sealed class Screen(val route: String) {
+sealed class Screen(val route: String) {
     object Menu : Screen("menu")
 
     object Profile : Screen("profileScreen")
@@ -114,7 +115,8 @@ fun NavegacionApp() {
             EpisodesScreen(
                 navigateToFilterEpisode = { navController.navigate(Screen.FilterEpisodes.route) },
                 navigateToFavoriteEpisode = { navController.navigate(Screen.FavoriteEpisodes.route) },
-                onEpisodeSelected = { id -> navController.navigate(Screen.EpisodeDetail(id).route) }
+                onEpisodeSelected = { id -> navController.navigate(Screen.EpisodeDetail(id).route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -122,7 +124,8 @@ fun NavegacionApp() {
             EpisodesFilterScreen(
                 navigateToAllEpisodes = { navController.navigate(Screen.AllEpisodes.route) },
                 navigateToFavoriteEpisode = { navController.navigate(Screen.FavoriteEpisodes.route) },
-                onEpisodeSelected = { id -> navController.navigate(Screen.EpisodeDetail(id).route) }
+                onEpisodeSelected = { id -> navController.navigate(Screen.EpisodeDetail(id).route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -130,16 +133,20 @@ fun NavegacionApp() {
             EpisodesFavScreen(
                 navigateToAllEpisodes = { navController.navigate(Screen.AllEpisodes.route) },
                 navigateToFilterEpisode = { navController.navigate(Screen.FilterEpisodes.route) },
-                onEpisodeSelected = { id -> navController.navigate(Screen.EpisodeDetail(id).route) }
+                onEpisodeSelected = { id -> navController.navigate(Screen.EpisodeDetail(id).route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
         // ✅ 2. Antes pasaba el id del episodio a la 'EpisodeDetailScreen' con Serializable y toRoute(), lo cual es una estrategia válida, pero puede simplificarse usando la navegación de 'Jetpack Compose' de forma nativa.  Usando 'NavArgument' para pasar parámetros.
-        composable( route = Screen.EpisodeDetailStatic.route,
-                    arguments = listOf(navArgument("id") { type = NavType.IntType })
-        ) { navBackStackEntry ->
-            val id = navBackStackEntry.arguments?.getInt("id") ?: 0
-            EpisodeDetailScreen(id = id)
+        composable(
+            // Contiene un parámetro dinámico dentro de la ruta "{id}", que será reemplazado por un valor real en tiempo de ejecución.
+            route = Screen.EpisodeDetailStatic.route,
+            // Espera un argumento llamado "id", que debe ser de tipo Int.
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) { navBackStackEntry -> // Es el objeto que contiene la información sobre la pantalla a la que se ha navegado. Permite acceder a los argumentos de la ruta.
+            val id = navBackStackEntry.arguments?.getInt("id") ?: 0 // Recupera el argumento "id" pasado en la navegación.
+            EpisodeDetailScreen(id = id) // Llama a la pantalla EpisodeDetailScreen, pasándole el id obtenido de la navegación.
         }
 
         /**
@@ -157,7 +164,8 @@ fun NavegacionApp() {
             QuotesScreen(
                 navigateToFilterQuotes = { navController.navigate(Screen.FilterQuotes.route) },
                 navigateToFavoriteQuotes = { navController.navigate(Screen.FavoriteQuotes.route) },
-                navigateToGameQuotes = { navController.navigate(Screen.GameQuotes.route) }
+                navigateToGameQuotes = { navController.navigate(Screen.GameQuotes.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -165,7 +173,8 @@ fun NavegacionApp() {
             QuotesFilterScreen(
                 navigateToQuotes = { navController.navigate(Screen.MainQuotes.route) },
                 navigateToFavoriteQuotes = { navController.navigate(Screen.FavoriteQuotes.route) },
-                navigateToGameQuotes = { navController.navigate(Screen.GameQuotes.route) }
+                navigateToGameQuotes = { navController.navigate(Screen.GameQuotes.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -173,7 +182,8 @@ fun NavegacionApp() {
             QuotesFavScreen(
                 navigateToQuotes = { navController.navigate(Screen.MainQuotes.route) },
                 navigateToFilterQuotes = { navController.navigate(Screen.FilterQuotes.route) },
-                navigateToGameQuotes = { navController.navigate(Screen.GameQuotes.route) }
+                navigateToGameQuotes = { navController.navigate(Screen.GameQuotes.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -182,7 +192,8 @@ fun NavegacionApp() {
                 navigateToQuotes = { navController.navigate(Screen.MainQuotes.route) },
                 navigateToFilterQuotes = { navController.navigate(Screen.FilterQuotes.route) },
                 navigateToFavoriteQuotes = { navController.navigate(Screen.FavoriteQuotes.route) },
-                navigateToQuestionQuotes = { navController.navigate(Screen.QuestionQuotes.route) }
+                navigateToQuestionQuotes = { navController.navigate(Screen.QuestionQuotes.route) },
+                navigationArrowBack = { navigateTo( navController = navController, screen = Screen.Menu ) }
             )
         }
 
@@ -198,6 +209,11 @@ fun NavegacionApp() {
             )
         }
     }
+}
+
+// Otra forma de reducir el código seria crear una función de navegación reutilizable (aplicada en 'navigationArrowBack', pero se podria en todas las vistas)
+fun navigateTo(navController: NavHostController, screen: Screen) {
+    navController.navigate(screen.route)
 }
 
 /**

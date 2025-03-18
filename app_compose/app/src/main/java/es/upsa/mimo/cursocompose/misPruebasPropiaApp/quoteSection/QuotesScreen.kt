@@ -17,13 +17,15 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.BottomBarComponent
+import es.upsa.mimo.cursocompose.misPruebasPropiaApp.TopBarComponent
 import es.upsa.mimo.cursocompose.misPruebasPropiaApp.profileSection.ProfileScreen
 
 @Composable
 fun QuotesScreen(
     navigateToFilterQuotes: () -> Unit,
     navigateToFavoriteQuotes: () -> Unit,
-    navigateToGameQuotes: () -> Unit
+    navigateToGameQuotes: () -> Unit,
+    navigationArrowBack:() -> Unit
 ) {
     Scaffold(
         bottomBar = {
@@ -34,7 +36,14 @@ fun QuotesScreen(
                     navigateToFavoritesQuotes = navigateToFavoriteQuotes,
                     navigateToGameQuotes = navigateToGameQuotes
             )
+        },
+        topBar = {
+            TopBarComponent(
+                title = "Listado de Citas",
+                onNavigationArrowBack = navigationArrowBack
+            )
         }
+
     ) { paddingValues ->
         Box(
             modifier = Modifier
@@ -59,5 +68,5 @@ fun QuotesScreen(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Modo Claro")
 @Composable
 fun QuoteScreenPreview() {
-    QuotesScreen({}, {}, {})
+    QuotesScreen({}, {}, {},{})
 }
